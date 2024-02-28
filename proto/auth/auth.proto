@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "/auth";
+
+service Auth {
+  rpc SignUp (SignUpRequest) returns (SignUpResponse);
+  rpc SignIn (SignInRequest) returns (SignInResponse);
+}
+
+message SignUpRequest {
+  string Email = 1;
+  string Password = 2;
+  // file_png/file_jpg Avatar = 3;
+  // repeated  file_png/file_jpg Images = 4;
+}
+
+message SignUpResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+} 
+
+message SignInRequest {
+  string Email = 1;
+  string Password = 2;
+}
+
+message SignInResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+}
